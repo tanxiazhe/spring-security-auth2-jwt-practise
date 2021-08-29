@@ -11,8 +11,8 @@
 	<groupId>com.maomao2</groupId>
 	<artifactId>spring-security-auth2-jwt-practise</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>control-sys-oauth2-server</name>
-	<description>spring-security-practise</description>
+	<name>spring-security-auth2-jwt-practise</name>
+	<description>spring-security-auth2-jwt-practise</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
