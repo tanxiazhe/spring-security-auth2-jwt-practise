@@ -13,15 +13,8 @@ public class SpringWebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
 
-    http
-        .authorizeRequests()
-        .antMatchers("/","/home").permitAll()
-        .anyRequest().authenticated()
-        .and()
-        .formLogin()
-        .loginPage("/login").permitAll()
-        .and()
-        .logout().permitAll();
+    http.authorizeRequests().antMatchers("/", "/home").permitAll().anyRequest().authenticated()
+        .and().formLogin().loginPage("/login").permitAll().and().logout().permitAll();
   }
 
   @Bean
@@ -30,11 +23,9 @@ public class SpringWebSecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
   @Override
- public void configure(AuthenticationManagerBuilder authenticationManagerBuilder)
-     throws Exception {
-    authenticationManagerBuilder.inMemoryAuthentication()
-        .passwordEncoder(passwordEncoder())
+  public void configure(AuthenticationManagerBuilder authenticationManagerBuilder)
+      throws Exception {
+    authenticationManagerBuilder.inMemoryAuthentication().passwordEncoder(passwordEncoder())
         .withUser("user").password(passwordEncoder().encode("123")).roles("USER");
- }
-
+  }
 }
