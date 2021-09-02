@@ -21,7 +21,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     clients.inMemory()                  // 使用in-memory存储客户端信息
         .withClient("client")       // client_id
         .secret(passwordEncoder.encode("secret"))                   // client_secret
-        .authorizedGrantTypes("authorization_code")     // 该client允许的授权类型
+        .authorizedGrantTypes("authorization_code","implicit")     // 该client允许的授权类型
         .authorities("READ_ONLY_CLIENT").scopes("read_profile_info")                      // 允许的授权范围
         .resourceIds("control_sys_security_resource_id").redirectUris("http://localhost:9099/login")
         .accessTokenValiditySeconds(5000).refreshTokenValiditySeconds(50000);

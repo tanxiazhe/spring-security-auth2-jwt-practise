@@ -20,7 +20,6 @@ public class OAuth2ResourceServer extends ResourceServerConfigurerAdapter {
   @Override
   public void configure(ResourceServerSecurityConfigurer oauthServer) {
     oauthServer.resourceId("control_sys_security_resource_id").tokenServices(tokenServices());
-    ;
   }
 
   @Bean
