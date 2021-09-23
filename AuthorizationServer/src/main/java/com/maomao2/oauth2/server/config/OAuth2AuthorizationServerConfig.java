@@ -3,6 +3,7 @@ package com.maomao2.oauth2.server.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -24,13 +25,17 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
   private TokenStore tokenStore = new InMemoryTokenStore();
 
+  @Autowired
+  private UserDetailsService userDetailsService;
+
+
   @Override
   public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
     //添加客户端信息
     clients.inMemory()                  // 使用in-memory存储客户端信息
         .withClient("client")       // client_id
         .secret(passwordEncoder.encode("secret"))                   // client_secret
-        .authorizedGrantTypes("authorization_code","implicit", "password")     // 该client允许的授权类型
+        .authorizedGrantTypes("authorization_code","implicit", "password","client_credentials", "refresh_token")     // 该client允许的授权类型.oauth2官方只有4种授权方式，不过spring security oauth2把refresh token也归为authorizedGrantTypes的一种
         .authorities("READ_ONLY_CLIENT").scopes("read_profile_info")                      // 允许的授权范围
         .resourceIds("control_sys_security_resource_id").redirectUris("http://localhost:9099/login")
         .accessTokenValiditySeconds(5000).refreshTokenValiditySeconds(50000);
@@ -44,6 +49,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
   @Override
   public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-    endpoints.tokenStore(tokenStore).authenticationManager(authenticationManager);
+    endpoints.tokenStore(tokenStore)
+        .authenticationManager(authenticationManager).userDetailsService(userDetailsService);;
   }
 }

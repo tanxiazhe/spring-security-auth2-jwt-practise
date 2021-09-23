@@ -1,0 +1,428 @@
+{
+	"info": {
+		"_postman_id": "d830b028-fbb4-421d-bac8-722a485c4525",
+		"name": "Springboot practise oauth2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:7082/hello",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6aaaeea0-2a70-4029-94cf-8adb0e3a7cc5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7082/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7082",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:7082/api/users/me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "b817bf6b-20a5-4e18-87da-e6dce369c141",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7082/api/users/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7082",
+					"path": [
+						"api",
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:7082/api/users/me2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6aaaeea0-2a70-4029-94cf-8adb0e3a7cc5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7082/api/users/me2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7082",
+					"path": [
+						"api",
+						"users",
+						"me2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.1 code, client id equal to client. Please use the request in explorer to login. user/password is user/123",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7081/oauth/authorize?client_id=client&response_type=code",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"oauth",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "client"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 access token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7081/oauth/token?grant_type=authorization_code&client_id=client&client_secret=secret&code=VDV3pz&redirect_url=https://www.baidu.com/callback&scope=read_profile_info&username=user&password=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						},
+						{
+							"key": "client_id",
+							"value": "client"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret"
+						},
+						{
+							"key": "code",
+							"value": "VDV3pz"
+						},
+						{
+							"key": "redirect_url",
+							"value": "https://www.baidu.com/callback"
+						},
+						{
+							"key": "scope",
+							"value": "read_profile_info"
+						},
+						{
+							"key": "username",
+							"value": "user"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2 client_credentials",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:7081/oauth/token?grant_type=client_credentials&client_id=client&client_secret=secret",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials"
+						},
+						{
+							"key": "client_id",
+							"value": "client"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 code, client id equal to client , and it only have read scope. Please use the request in explorer to login. user/password is user/123",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7081/oauth/authorize?client_id=client&response_type=code",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"oauth",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "client"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 access token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:7081/oauth/token?grant_type=authorization_code&client_secret=secret&redirect_url=http://localhost:8081/login&client_id=client&code=jTmElC",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret"
+						},
+						{
+							"key": "redirect_url",
+							"value": "http://localhost:8081/login"
+						},
+						{
+							"key": "scope",
+							"value": "all",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"disabled": true
+						},
+						{
+							"key": "client_id",
+							"value": "client"
+						},
+						{
+							"key": "code",
+							"value": "jTmElC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 refresh_token to get access token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:7081/oauth/token?grant_type=refresh_token&refresh_token=d82255e5-7921-4479-94c2-83607345ffe1&client_id=client&client_secret=secret",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token"
+						},
+						{
+							"key": "refresh_token",
+							"value": "d82255e5-7921-4479-94c2-83607345ffe1"
+						},
+						{
+							"key": "client_id",
+							"value": "client"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.1 password",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7081/oauth/authorize?client_id=client&response_type=code",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"oauth",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "client"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.2 access token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7081/oauth/token?grant_type=authorization_code&client_id=client&client_secret=secret&code=OKUvwM&redirect_url=https://www.baidu.com/callback&scope=read_profile_info&username=user&password=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7081",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						},
+						{
+							"key": "client_id",
+							"value": "client"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret"
+						},
+						{
+							"key": "code",
+							"value": "OKUvwM"
+						},
+						{
+							"key": "redirect_url",
+							"value": "https://www.baidu.com/callback"
+						},
+						{
+							"key": "scope",
+							"value": "read_profile_info"
+						},
+						{
+							"key": "username",
+							"value": "user"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

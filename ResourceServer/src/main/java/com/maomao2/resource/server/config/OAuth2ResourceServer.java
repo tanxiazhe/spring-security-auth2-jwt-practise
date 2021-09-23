@@ -25,7 +25,7 @@ public class OAuth2ResourceServer extends ResourceServerConfigurerAdapter {
   @Bean
   RemoteTokenServices tokenServices() {
     RemoteTokenServices services = new RemoteTokenServices();
-    services.setCheckTokenEndpointUrl("http://localhost:8081/oauth/check_token");
+    services.setCheckTokenEndpointUrl("http://localhost:7081/oauth/check_token");
     services.setClientId("client");
     services.setClientSecret("secret");
     return services;

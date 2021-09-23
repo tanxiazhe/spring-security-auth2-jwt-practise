@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @Controller
 public class RestResourceController {
   @RequestMapping("/api/users/me")
@@ -24,5 +26,10 @@ public class RestResourceController {
       profile.setName(principal.toString());
     }
     return ResponseEntity.ok(profile);
+  }
+
+  @RequestMapping("/api/users/me2")
+  public ResponseEntity<String> profile(Principal principal) {
+    return ResponseEntity.ok(principal.getName());
   }
 }
